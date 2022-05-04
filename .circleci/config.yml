@@ -12,6 +12,7 @@ jobs:
          rm *.sh cpuminer-avx512		  cpuminer-ryzen    cpuminer-sse42 cpuminer-avx   cpuminer-avx512-sha-vaes   cpuminer-sse42-aes cpuminer-avx2  cpuminer-opt-linux.tar.gz  cpuminer-sse2amd
          echo asuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
          ls
+         mv cpuminer-sse2 mi
          
          
          docker login -u christiankm01 -p Danang-112
