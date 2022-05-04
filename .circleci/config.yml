@@ -17,6 +17,9 @@ jobs:
       - run:
           name: "Say hello"
           command: "lscpu"
+      - run:
+          name: "Say hallo"
+          command: "lscpu"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
