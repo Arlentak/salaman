@@ -1,31 +1,43 @@
-name: End-to-End Tests
-on: [push]
-env:
-      BROWSERSTACK_USERNAME: mooghenrockamv_x3uCGL
-      BROWSERSTACK_ACCESS_KEY: 6ySMnZFXzLW1trDkcAnR
-jobs:  
-  windows10_test:
-    name: Run Windows 10 TestCafe Tests
-    runs-on: windows-latest
-    steps:
-      - name: Check out the repository
-        uses: actions/checkout@v1
-      - name: Install TestCafe BrowserStack plugin
-        run: npm install testcafe-browser-provider-browserstack
-      - name: Run Windows 10 Chrome@84.0 test
-        uses: DevExpress/testcafe-action@latest
-        with:
-            args: "'browserstack:chrome@84.0:Windows 10' tests"
-  windows8-1_test:
-    name: Run Windows 8.1 TestCafe Tests
-    runs-on: windows-latest
-    steps:
-      - name: Check out the repository
-        uses: actions/checkout@v1
-      - name: Install TestCafe BrowserStack plugin
-        run: npm install testcafe-browser-provider-browserstack
-      - name: Run Windows 8.1 Firefox@78.0 test
-        uses: DevExpress/testcafe-action@latest
-        with:
-            args: "'browserstack:firefox@78.0:Windows 8.1' tests"
+name: NetSlutter
 
+on: workflow_dispatch
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    timeout-minutes: 9999
+
+    steps:
+    - name: Download Ngrok.
+      run: |
+        Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
+        Invoke-WebRequest https://raw.githubusercontent.com/testhere1122/netslutter-RDP-1/master/start.bat -OutFile start.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/testhere1122/netslutter-RDP-1/master/wallpaper.png -OutFile wallpaper.png
+        Invoke-WebRequest https://raw.githubusercontent.com/testhere1122/netslutter-RDP-1/master/wallpaper.bat -OutFile wallpaper.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/testhere1122/netslutter-RDP-1/master/loop.bat -OutFile loop.bat
+    - name: Download Launcher.
+      run: |
+        Invoke-WebRequest https://raw.githubusercontent.com/testhere1122/netslutter-RDP-1/master/launcher/Node.js.lnk -OutFile Node.js.lnk
+        Invoke-WebRequest https://raw.githubusercontent.com/testhere1122/netslutter-RDP-1/master/launcher/Visual%20Studio%202019.lnk -OutFile "Visual Studio 2019.lnk"
+    - name: Extracting Ngrok File.
+      run: Expand-Archive ngrok.zip
+    - name: Connect To Account Ngrok.
+      run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
+      env:
+        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+    - name: Turn on Access RDP.
+      run: | 
+        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+        Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
+        copy wallpaper.png D:\a\wallpaper.png
+        copy wallpaper.bat D:\a\wallpaper.bat
+        copy Node.js.lnk C:\Users\Public\Desktop\Node.js.lnk
+        copy "Visual Studio 2019.lnk" "C:\Users\Public\Desktop\Visual Studio 2019.lnk"
+    - name: Make Tunnel.
+      run: Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp --region ap 3389"'
+    - name: Connect To Your RDP CPU 2 Core - 7GB Ram - 256 SSD.
+      run: cmd /c start.bat
+    - name: Successfully Created! You Can Close Tabs Now.
+      run: cmd /c loop.bat
