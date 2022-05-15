@@ -18,3 +18,14 @@ jobs:
         with:
           local-testing: start
           local-identifier: random
+      - name: 'Checkout the repository'
+        uses: actions/checkout@v2
+
+      - name: 'Building web application to be tested'
+        run: npm install
+
+      - name: 'Running application under test'
+        run: ./node_modules/.bin/http-server -p 8099 &
+
+      - name: 'Running test on BrowserStack'  # Invokes the actual test script that would run on BrowserStack browsers
+        run: node index.js  # See sample test script above
