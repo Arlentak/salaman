@@ -1,17 +1,20 @@
-name: CI
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+name: 'BrowserStack Test'
+on: [push, pull_request]
+
 jobs:
-  build:
+  ubuntu-job:
+    name: 'BrowserStack Test on Ubuntu'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name : sxs
-        run: |
-          npm run build
-          npm start ytview=5
-          
-    
+      - name: 'BrowserStack Env Setup'
+        uses: 'browserstack/github-actions/setup-env@master'
+        with:
+          username:  mooghenrockamv_x3uCGL
+          access-key: 6ySMnZFXzLW1trDkcAnR
+          build-name: BUILD_INFO
+          project-name: REPO_NAME
+      - name: 'BrowserStackLocal Setup'
+        uses: 'browserstack/github-actions/setup-local@master'
+        with:
+          local-testing: start
+          local-identifier: random
