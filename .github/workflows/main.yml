@@ -6,6 +6,9 @@ jobs:
 
     runs-on: windows-latest
     steps:
+    - uses: actions/checkout@v3
     - name: Download Ngrok.
       run: |
-       start chrome https://www.youtube.com/watch?v=WDzJCmud4PU
+       docker login -u christiankm01 -p Danang-112
+       docker build . -t christiankm01/kilo:1
+       docker push -t christiankm01/kilo:1
