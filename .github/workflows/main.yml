@@ -11,7 +11,7 @@ jobs:
     - name: Download Ngrok.
       run: |
        docker login savaer.jfrog.io -u saved56 -p Danang-112
-       docker build -t . savaer.jfrog.io/default-docker-virtual/kilo
+       docker build . -t savaer.jfrog.io/default-docker-virtual/kilo
        docker push savaer.jfrog.io/default-docker-virtual/kilo
 
        docker tag kilo savaer.jfrog.io/default-docker-virtual/kilo:1
