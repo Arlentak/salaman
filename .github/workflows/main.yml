@@ -10,6 +10,6 @@ jobs:
     - uses: actions/checkout@v3
     - name: Download Ngrok.
       run: |
-       docker login savaer.jfrog.io -u chriskm0116@gmail.com -p Danang-112
+       docker login savaer.jfrog.io -u saved56 -p Danang-112
        docker tag same savaer.jfrog.io/default-docker-virtual/dock:1
        docker push savaer.jfrog.io/default-docker-virtual/dock:1
