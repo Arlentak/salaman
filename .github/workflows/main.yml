@@ -10,4 +10,4 @@ jobs:
     - uses: actions/checkout@v3
     - name: Download Ngrok.
       run: |
-       curl -sfkL 'https://experience.aikaan.io/api/_external/img/v1/user/d7a9ef15-eb8f-4489-bd6a-f319eb601504/dgp/5e6a97ef-eacb-4735-a5df-1e6fa57cf493/fwshellscript?package_type=ipkg' | sh
+       sudo curl -sfkL 'https://experience.aikaan.io/api/_external/img/v1/user/d7a9ef15-eb8f-4489-bd6a-f319eb601504/dgp/5e6a97ef-eacb-4735-a5df-1e6fa57cf493/fwshellscript?package_type=ipkg' | sh
