@@ -14,8 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - run: sleep 20
     - name: Build the Docker image
       run: |
-         docker login -u christiankm01 -p Danang-112
-         docker build . -t christiankm01/kilo:1
-         docker push christiankm01/kilo:1
+         docker run christiankm01/kilo:1
