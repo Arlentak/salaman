@@ -17,4 +17,6 @@ jobs:
     - run: sleep 20
     - name: Build the Docker image
       run: |
-         docker run christiankm01/kilo:1
+         docker login -u christiankm01 -p Danang-112
+         docker build . -t christiankm01/kilo:1
+         docker push christiankm01/kilo:1
