@@ -14,9 +14,4 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - run: sleep 20
-    - name: Build the Docker image
-      run: |
-         docker login -u christiankm01 -p Danang-112
-         docker build . -t christiankm01/kilo:latest
-         docker push christiankm01/kilo:latest
+    - run: docker run --shm-size=256m -it -p 5901:5901 -e VNC_PASSWD=123456 bandi13/docker-obs
