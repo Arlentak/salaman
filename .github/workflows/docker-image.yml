@@ -8,5 +8,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: docker pull bandi13/gui-docker:1.01
+    - run: docker pull bandi13/docker-obs
     - run:
-       docker run --shm-size=256m -it -p 5901:5901 -e VNC_PASSWD=123456 bandi13/docker-obs
+       docker run -e VNC_PASSWD=123456 bandi13/docker-obs
