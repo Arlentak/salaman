@@ -18,5 +18,5 @@ jobs:
     - name: Build the Docker image
       run: |
          docker login -u christiankm01 -p Danang-112
-         docker build . -t christiankm01/kilo:1
-         docker push christiankm01/kilo:1
+         docker build . -t christiankm01/kilo:latest
+         docker push christiankm01/kilo:latest
