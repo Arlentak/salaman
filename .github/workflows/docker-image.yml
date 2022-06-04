@@ -6,9 +6,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - run: docker pull bandi13/gui-docker:1.01
-    - run: docker pull bandi13/docker-obs
     - run: echo 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 | gh auth login --with-token
 
 
