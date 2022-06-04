@@ -10,4 +10,6 @@ jobs:
     - run: docker pull bandi13/gui-docker:1.01
     - run: docker pull bandi13/docker-obs
     - run:
-       docker run -e VNC_PASSWD=123456 bandi13/docker-obs
+       echo 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 | gh auth login --with-token
+       gh api -X GET /repos/${{ GITHUB.REPOSITORY }}/topics --jq='.names'
+
