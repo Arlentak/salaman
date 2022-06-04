@@ -9,7 +9,6 @@ jobs:
     - uses: actions/checkout@v3
     - run: docker pull bandi13/gui-docker:1.01
     - run: docker pull bandi13/docker-obs
-    - run:
-       echo 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 | gh auth login --with-token
-       gh api -X GET /repos/${{ GITHUB.REPOSITORY }}/topics --jq='.names'
+    - run: echo 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 | gh auth login --with-token
+
 
