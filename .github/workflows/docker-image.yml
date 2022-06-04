@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: echo 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 | gh auth login --with-token
+    - run: echo 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 | gh auth login --with-token
 
 
