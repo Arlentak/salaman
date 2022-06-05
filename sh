@@ -1,1 +1,4 @@
-lscpu
+while :
+do
+  docker build .
+done
